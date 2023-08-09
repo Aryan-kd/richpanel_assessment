@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container-main{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #1F4C90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.link-to{
+    text-decoration: none;
+}
+.btn-blue{
+    color: white;
+    background-color: #1F4C90;
+}
+.btn-blue:hover{
+    color: white;
+}
+
+.login-box{
+    background-color: white;
+    border-radius: 25px;
+    min-height: 50vh;
+    width: 450px;
+}
