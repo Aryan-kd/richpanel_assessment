@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch } from '../component';
+import { Link } from 'react-router-dom';
 import './PricingPage.scss';
 
 const PricingPage = () => {
@@ -33,7 +33,7 @@ const PricingPage = () => {
       <div className='plan-box'>
         {/* row1 */}
         <div className='row'>
-          <div className='col-md-6 col-lg-4 al-center'>
+          <div className='col-md-12 col-lg-4 al-center'>
             <div className='switch-box'>
               <button
                 className={`toggle-${toggle ? 'active' : 'deactive'}`}
@@ -159,6 +159,22 @@ const PricingPage = () => {
         {/* row5 */}
         <div className='row'>
           <div className='col-md-6 col-lg-4'>
+            <h5>Number of active screen at one time</h5>
+          </div>
+          <div className='col-md-12 col-lg-8'>
+            <div className='price-box'>
+              <h5 className={plan === 1 ? 'checked' : ''}>1</h5>
+              <h5 className={plan === 2 ? 'checked' : ''}>3</h5>
+              <h5 className={plan === 3 ? 'checked' : ''}>5</h5>
+              <h5 className={plan === 4 ? 'checked' : ''}>10</h5>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+        {/* row6 */}
+        <div className='row'>
+          <div className='col-md-6 col-lg-4'>
             <h5>Devices you can use to watch</h5>
           </div>
           <div className='col-md-12 col-lg-8'>
@@ -168,13 +184,13 @@ const PricingPage = () => {
                   <h6 className={plan === 1 ? 'checked' : ''}>Phone</h6>
                 </li>
                 <li>
-                  <h6 className={plan === 1 ? 'checked' : ''}>Tablet</h6>
+                  <h6 className={plan === 1 ? 'checked' : ''}> </h6>
                 </li>
                 <li>
-                  <h6 className={plan === 1 ? 'checked' : ''}></h6>
+                  <h6 className={plan === 1 ? 'checked' : ''}> </h6>
                 </li>
                 <li>
-                  <h6 className={plan === 1 ? 'checked' : ''}></h6>
+                  <h6 className={plan === 1 ? 'checked' : ''}> </h6>
                 </li>
               </ul>
               <ul>
@@ -185,10 +201,10 @@ const PricingPage = () => {
                   <h6 className={plan === 2 ? 'checked' : ''}>Tablet</h6>
                 </li>
                 <li>
-                  <h6 className={plan === 2 ? 'checked' : ''}>Computer</h6>
+                  <h6 className={plan === 2 ? 'checked' : ''}> </h6>
                 </li>
                 <li>
-                  <h6 className={plan === 2 ? 'checked' : ''}>TV</h6>
+                  <h6 className={plan === 2 ? 'checked' : ''}> </h6>
                 </li>
               </ul>
               <ul>
@@ -202,7 +218,7 @@ const PricingPage = () => {
                   <h6 className={plan === 3 ? 'checked' : ''}>Computer</h6>
                 </li>
                 <li>
-                  <h6 className={plan === 3 ? 'checked' : ''}>TV</h6>
+                  <h6 className={plan === 3 ? 'checked' : ''}> </h6>
                 </li>
               </ul>
               <ul>
@@ -223,9 +239,10 @@ const PricingPage = () => {
           </div>
         </div>
       </div>
-
       <div className='al-center'>
-        <button className='btn btn-blue btn-next'>Next</button>
+        <Link to='/payment' className='btn btn-blue btn-next'>
+          Next
+        </Link>
       </div>
     </div>
   );

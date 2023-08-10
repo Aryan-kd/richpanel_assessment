@@ -1,0 +1,71 @@
+.plan-detail{
+    width: 600px;
+    min-height: 30vh;
+    background-color: white;
+    color: black;
+    border-radius: 23px;
+    padding: 20px 10px 20px 18px;
+    // top right bottom left  
+}
+
+.row1{
+    .detail-1{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        h6{
+            margin-left: 10px;
+            padding: 3px 8px;
+            font-weight: bold;
+        }
+        .active-plan{
+            background-color: #C2DDFD;
+            color: #4576BB;
+        }
+        .cancelled-plan{
+            background-color: #FAF0EE;
+            color: #EEADAA;
+        }
+    }
+
+    .detail-2{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .cancel-btn{
+            outline: none;
+            border: none;
+            padding: 5px;
+            background-color: transparent;
+            color: #275294;
+            font-weight: bold;
+        }
+    }
+}
+
+.row2{
+    .about-plan{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .head1{
+        color: #767677;
+    }
+    .head2{
+        color: #C3C3C4;
+    }
+    .head3{
+        span{
+            font-weight: bold;
+        }
+    }
+    .head5{
+        color: black;
+        background-color: #F5F6F7;
+        padding: 3px;
+        border-radius: 5px;
+    }
+}

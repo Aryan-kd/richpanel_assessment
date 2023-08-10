@@ -1,0 +1,35 @@
+.payment-box{
+    background-color: white;
+    width: 800px;
+    min-height: 30vh;
+    border-radius: 18px;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+
+    .card-info{
+        padding: 25px;
+        flex: 6;
+    }
+    .order-summery{
+        flex: 4;
+        padding: 25px 15px;
+        background-color: #F4F5F6;
+        border-radius: 0 18px 18px 0;
+        
+        h5{
+            margin-bottom: 15px;
+        }
+
+        .order-row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p{
+                font-weight: 700;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

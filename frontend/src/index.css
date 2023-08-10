@@ -17,9 +17,23 @@
 .btn-blue{
     color: white;
     background-color: #1F4C90;
+    font-weight: 600;
 }
 .btn-blue:hover{
     color: white;
+}
+
+.btn-outline-blue{
+    color: #1F4C90;
+    background-color: white;
+    border: 1px solid #1F4C90;
+    font-weight: 600;
+    padding: 5px 18px;
+}
+.btn-outline-blue:hover{
+    color: white;
+    background-color: #1F4C90;
+    border: 1px solid #1F4C90;
 }
 
 .login-box{
