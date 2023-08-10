@@ -35,6 +35,19 @@
     background-color: #1F4C90;
     border: 1px solid #1F4C90;
 }
+.btn-outline-white{
+    color: rgb(194, 187, 187);
+    background-color: white;
+    border: 1px solid rgb(194, 187, 187);
+    font-size: larger;
+    font-weight: 600;
+    padding: 10px 23px;
+}
+.btn-outline-white:hover{
+    color: white;
+    background-color: rgb(194, 187, 187);
+    border: 1px solid rgb(194, 187, 187);
+}
 
 .login-box{
     background-color: white;
@@ -47,4 +60,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button-fixed-top{
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

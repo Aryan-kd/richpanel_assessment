@@ -1,10 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './PaymentScreen.scss';
+import Logout from '../component/Logout';
+import { useContextApi } from '../Context';
 
 const PaymentScreen = () => {
+  const context = useContextApi();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (context.user === null) {
+      navigate('/login');
+    }
+  }, [context, navigate]);
+
   return (
     <div className='container-main'>
+      <Logout />
       <div className='payment-box'>
         <div className='card-info'>
           <h4 className='head1'>Complete Payment</h4>
