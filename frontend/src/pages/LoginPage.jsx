@@ -7,6 +7,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    context.checkLocalStorage();
     if (context.user !== null) {
       navigate('/');
     }

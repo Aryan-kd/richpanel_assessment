@@ -37,6 +37,29 @@ const PricingPage = () => {
     setPlan(4);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let name;
+    let cycle;
+    if (toggle) {
+      cycle = 'Monthly';
+    } else {
+      cycle = 'Yearly';
+    }
+
+    if (plan === 1) {
+      name = 'Mobile';
+    } else if (plan === 2) {
+      name = 'Basic';
+    } else if (plan === 3) {
+      name = 'Standard';
+    } else if (plan === 4) {
+      name = 'Premium';
+    }
+
+    await context.findPlan(name, cycle);
+    navigate('/payment');
+  };
   return (
     <>
       <Logout />
@@ -269,7 +292,8 @@ const PricingPage = () => {
           </div>
         </div>
         <div className='al-center'>
-          <Link to='/payment' className='btn btn-blue btn-next'>
+          {/* <Link to='/payment' className='btn btn-blue btn-next'> */}
+          <Link onClick={handleSubmit} className='btn btn-blue btn-next'>
             Next
           </Link>
         </div>
