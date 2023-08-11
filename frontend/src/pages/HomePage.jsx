@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContextApi } from '../Context';
 import './HomePage.scss';
@@ -12,15 +12,10 @@ const HomePage = () => {
     if (context.user === null) {
       navigate('/login');
     }
-    if (context.user.PlanName === null) {
-      navigate('/pricing');
-    }
   }, [context, navigate]);
-  console.log(context.user);
-  const [currentStatus, setCurrentStatus] = useState(true);
 
   const changePlan = () => {
-    setCurrentStatus(false);
+    console.log('Cancle');
   };
 
   return (

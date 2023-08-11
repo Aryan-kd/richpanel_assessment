@@ -1,52 +1,53 @@
 import { createContext, useContext, useState } from 'react';
-import { data, userInfo } from '../assests/plan.js';
+import axios from 'axios';
+
+const url = 'http://localhost:4000';
 
 const ContextApi = createContext();
 export const useContextApi = () => useContext(ContextApi);
 
 export const ContextProvider = (props) => {
   const [user, setUser] = useState(null);
-  const [planSelected, setPlanSelected] = useState(null);
 
   const LoginUser = async (email, pass) => {
-    let userData = await userInfo.find((us) => {
-      if (us.Email === email && us.Password === pass) {
-        return true;
+    const userSend = {
+      email: email,
+      password: pass,
+    };
+    await axios.post(`${url}/login`, userSend).then((res) => {
+      if (res.data.Data === null) {
+        setUser(null);
+        alert(res.data.message);
+      } else {
+        setUser(res.data.Data);
       }
     });
-
-    if (userData) {
-      // console.log(userData);
-      setUser(userData);
-    }
   };
 
   const LogoutUser = () => {
     setUser(null);
   };
 
-  const PlanSelector = async () => {
-    console.log(planSelected);
-  };
-
-  const RegisterUser = (Name, Email, Password) => {
-    let userdata = {
-      Name: Name,
-      Email: Email,
-      Password: Password,
-      PlanStatus: null,
-      PlanCycle: null,
-      PlanName: null,
-      Date: null,
+  const RegisterUser = async (Name, Email, Password) => {
+    const userSend = {
+      name: Name,
+      email: Email,
+      password: Password,
     };
-    setUser(userdata);
+    await axios.post(`${url}/register`, userSend).then((res) => {
+      if (res.data.Data === null) {
+        setUser(null);
+        alert(res.data.message);
+      } else {
+        setUser(res.data.Data);
+      }
+    });
   };
 
   return (
     <ContextApi.Provider
       value={{
         user,
-        planSelected,
         LoginUser,
         LogoutUser,
         RegisterUser,
