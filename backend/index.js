@@ -24,6 +24,11 @@ app.use(function (req, res, next) {
     'Access-Control-Allow-Origin',
     'https://richpanelapi.onrender.com'
   );
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000/');
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    'https://richpanelaryan.netlify.app/'
+  );
 
   // Request methods you wish to allow
   res.setHeader(

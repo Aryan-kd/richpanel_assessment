@@ -1,7 +1,13 @@
 import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
-// const url = 'https://richpanelapi.onrender.com:10000';
-const url = 'http://localhost:4000';
+const url = 'https://richpanelapi.onrender.com';
+// const url = 'http://localhost:4000';
+
+let Header = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
 
 const ContextApi = createContext();
 export const useContextApi = () => useContext(ContextApi);
@@ -15,16 +21,20 @@ export const ContextProvider = (props) => {
       email: email,
       password: pass,
     };
-    let res = await axios.post(`${url}/login`, userSend);
-    if (res.data.Data === null) {
-      setUser(null);
-      alert(res.data.message);
-    } else {
-      await findPlanId(res.data.Data.planId);
-      localStorage.setItem('user', JSON.stringify(res.data.Data));
-      setUser(res.data.Data);
-      if (res.data.Data.planId !== null) {
+    try {
+      let res = await axios.post(`${url}/login`, userSend);
+      if (res.data.Data === null) {
+        setUser(null);
+        alert(res.data.message);
+      } else {
+        await findPlanId(res.data.Data.planId);
+        localStorage.setItem('user', JSON.stringify(res.data.Data));
+        setUser(res.data.Data);
+        if (res.data.Data.planId !== null) {
+        }
       }
+    } catch (error) {
+      console.log('Error Login In');
     }
   };
 
@@ -40,8 +50,8 @@ export const ContextProvider = (props) => {
       email: Email,
       password: Password,
     };
-
-    await axios.post(`${url}/register`, userSend).then((res) => {
+    try {
+      let res = await axios.post(`${url}/register`, userSend, Header);
       if (res.data.Data === null) {
         setUser(null);
         alert(res.data.message);
@@ -49,12 +59,14 @@ export const ContextProvider = (props) => {
         localStorage.setItem('user', JSON.stringify(res.data.Data));
         setUser(res.data.Data);
       }
-    });
+    } catch (error) {
+      console.log('Error in Register');
+    }
   };
 
   const findPlanId = async (id) => {
     try {
-      let res = await axios.post(`${url}/findplanid`, { id });
+      let res = await axios.post(`${url}/findplanid`, { id }, Header);
       if (res) {
         localStorage.setItem('planActive', JSON.stringify(res.data.Data));
         setPlanSelected(res.data.Data);
@@ -62,7 +74,7 @@ export const ContextProvider = (props) => {
         setPlanSelected(null);
       }
     } catch (error) {
-      console.log('Error');
+      console.log('Error Finding Plan');
     }
   };
 
@@ -71,22 +83,30 @@ export const ContextProvider = (props) => {
       name: name,
       cycle: cycle,
     };
-    await axios.post(`${url}/findplan`, planSend).then((res) => {
+    try {
+      let res = await axios.post(`${url}/findplan`, planSend, Header);
       if (res) {
         localStorage.setItem('planActive', JSON.stringify(res.data.Data));
         setPlanSelected(res.data.Data);
       } else {
         setPlanSelected(null);
       }
-    });
+    } catch (error) {
+      console.log('Error Fetching Plan');
+    }
   };
+
   const planPurchase = async () => {
     localStorage.setItem('planActive', JSON.stringify(planSelected));
     try {
-      await axios.post(`${url}/purchase`, {
-        plan: planSelected,
-        userId: user._id,
-      });
+      await axios.post(
+        `${url}/purchase`,
+        {
+          plan: planSelected,
+          userId: user._id,
+        },
+        Header
+      );
     } catch (error) {
       console.log('Error Purchase');
     }
@@ -102,7 +122,7 @@ export const ContextProvider = (props) => {
         window.location.href = response.data.url;
       }
     } catch (error) {
-      console.log('Error');
+      console.log('Error Checkout');
     }
   };
 
