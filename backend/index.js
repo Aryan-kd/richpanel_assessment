@@ -20,16 +20,24 @@ connectDB();
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader(
-    'Access-Control-Allow-Origin',
-    'https://richpanelapi.onrender.com'
-  );
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000/');
-  res.setHeader(
-    'Access-Control-Allow-Origin',
-    'https://richpanelaryan.netlify.app/'
-  );
+  // res.setHeader(
+  //   'Access-Control-Allow-Origin',
 
+  // );
+  // res.setHeader('Access-Control-Allow-Origin', );
+  // res.setHeader(
+  //   'Access-Control-Allow-Origin',
+
+  // );
+  const allowedOrigins = [
+    'http://localhost:3000/',
+    'https://richpanelapi.onrender.com',
+    'https://richpanelaryan.netlify.app/',
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   // Request methods you wish to allow
   res.setHeader(
     'Access-Control-Allow-Methods',
