@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+// const url = 'https://richpanelapi.onrender.com:10000';
 const url = 'http://localhost:4000';
 
 const ContextApi = createContext();
