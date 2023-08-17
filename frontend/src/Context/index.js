@@ -56,6 +56,7 @@ export const ContextProvider = (props) => {
         setUser(null);
         alert(res.data.message);
       } else {
+        await findPlanId(res.data.Data.planId);
         localStorage.setItem('user', JSON.stringify(res.data.Data));
         setUser(res.data.Data);
       }

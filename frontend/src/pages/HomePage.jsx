@@ -53,7 +53,9 @@ const HomePage = () => {
             {/* row2 */}
             <div className='row row2'>
               <div className='about-plan'>
-                <h6 className='head1'>{context.planSelected.Name}</h6>
+                <h6 className='head1'>
+                  {context.planSelected.Name ? context.planSelected.Name : ''}
+                </h6>
                 <h6 className='head2 mb-3'>Phone + Tablet</h6>
                 <h2 className='head3 mb-3'>
                   <span>₹ {context.planSelected.Price}</span>/
